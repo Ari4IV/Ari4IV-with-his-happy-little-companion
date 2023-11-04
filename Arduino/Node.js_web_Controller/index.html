@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="on">on</button>
+    <button id="off">off</button>
+    <script>
+        document.getElementById("on").addEventListener("click", () => fetch('/on'));
+        document.getElementById("off").addEventListener("click", () => fetch('/off'));
+    </script>
+</body>
+</html>

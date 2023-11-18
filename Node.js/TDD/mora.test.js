@@ -1,10 +1,13 @@
 const mora = require("./mora");
 
+test("a石頭 b石頭 平手", () => {
+    expect(mora('rock', 'rock')).toBe('eq');
+});
 test("a石頭 b剪刀 a獲勝", () => {
     expect(mora('rock', 'scissors')).toBe('a');
 });
-test("a石頭 b石頭 平手", () => {
-    expect(mora('rock', 'rock')).toBe('eq');
+test("a石頭 b布 b獲勝", () => {
+    expect(mora('rock', 'paper')).toBe('b');
 });
 test("a剪刀 b石頭 b獲勝", () => {
     expect(mora('scissors', 'rock')).toBe('b');

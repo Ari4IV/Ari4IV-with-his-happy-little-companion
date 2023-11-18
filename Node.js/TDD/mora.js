@@ -1,8 +1,6 @@
 function mora(a, b) {
     if (a === b) return 'eq';
-    if (a === 'rock' && b === 'scissors') return 'a';
-    if (a === 'scissors' && b === 'paper') return 'a';
-    if (a === 'paper' && b === 'rock') return 'a';
-    return 'b';
+    return (a === 'rock' && b === 'scissors') || (a === 'scissors' && b === 'paper') || (a === 'paper' && b === 'rock') ? 'a' : 'b';
 }
+
 module.exports = mora;

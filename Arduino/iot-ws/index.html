@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED控制</title>
+</head>
+<body>
+    <h1>LED控制</h1>
+    <button id="on">On</button>
+    <button id="off">Off</button>
+    <div id="message"></div>
+    <script>
+        document.getElementById('on').addEventListener('click', () => fetch('/on'));
+        document.getElementById('off').addEventListener('click', () => fetch('/off'));
+    </script>
+    <script>
+        //使用 WebSocket 的網址向 Server 開啟連結
+        const ws = new WebSocket('ws://localhost:8080')
+
+        //開啟後執行的動作，指定一個 function 會在連結 WebSocket 後執行
+        ws.onopen = () => {
+            console.log('open connection')
+        }
+
+        //關閉後執行的動作，指定一個 function 會在連結中斷後執行
+        ws.onclose = () => {
+            console.log('close connection')
+        }
+
+        ws.onmessage = event => {
+            document.getElementById('message').innerText += event.data + "\n";
+        }
+    </script>
+</body>
+</html>

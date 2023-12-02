@@ -42,11 +42,13 @@ void checkButtonState(unsigned long currentTime) {
     digitalWrite(led1Pin, HIGH);
     led1StartTime = currentTime;
     isLed1On = true;
+    Serial.println("btn on1"); // 當按鈕1被按下時
   }
   if (digitalRead(button2Pin) == HIGH) {
     digitalWrite(led2Pin, HIGH);
     led2StartTime = currentTime;
     isLed2On = true;
+    Serial.println("btn on2"); // 當按鈕2被按下時
   }
 }
 
@@ -56,16 +58,20 @@ void handleSerialInput(unsigned long currentTime) {
     digitalWrite(led1Pin, HIGH);
     led1StartTime = currentTime;
     isLed1On = true;
+    Serial.println("web on1"); // 通過串列開啟LED1
   } else if (inputString == "off1\n") {
     digitalWrite(led1Pin, LOW);
     isLed1On = false;
+    Serial.println("web off1"); // 通過串列關閉LED1
   } else if (inputString == "on2\n") {
     digitalWrite(led2Pin, HIGH);
     led2StartTime = currentTime;
     isLed2On = true;
+    Serial.println("web on2"); // 通過串列開啟LED2
   } else if (inputString == "off2\n") {
     digitalWrite(led2Pin, LOW);
     isLed2On = false;
+    Serial.println("web off2"); // 通過串列關閉LED2
   }
 }
 

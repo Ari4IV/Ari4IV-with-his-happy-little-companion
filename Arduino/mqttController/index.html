@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED控制</title>
+</head>
+<body>
+    <h1>LED控制</h1>
+    <div>
+        <button id="on1">LED 1 On</button>
+        <button id="off1">LED 1 Off</button>
+    </div>
+    <div>
+        <button id="on2">LED 2 On</button>
+        <button id="off2">LED 2 Off</button>
+    </div>
+    <div id="message"></div>
+    <script>
+        document.getElementById('on1').addEventListener('click', () => fetch('/on1'));
+        document.getElementById('off1').addEventListener('click', () => fetch('/off1'));
+        document.getElementById('on2').addEventListener('click', () => fetch('/on2'));
+        document.getElementById('off2').addEventListener('click', () => fetch('/off2'));
+    </script>
+    <script>
+        const ws = new WebSocket('ws://localhost:8080')
+
+        ws.onopen = () => {
+            console.log('open connection');
+        }
+
+        ws.onclose = () => {
+            console.log('close connection');
+        }
+
+        ws.onmessage = event => {
+            document.getElementById('message').innerText += event.data + "\n";
+        }
+    </script>
+</body>
+</html>
